@@ -1,0 +1,75 @@
+﻿ORG 100
+
+loop, Input
+      Store a
+      Load a
+      StoreI b
+      Load b
+      Add one
+      Store b
+      Load cont 
+      subt one
+      Store cont
+      Skipcond 800
+      Jump Sens2
+Jump loop
+
+Sens2, Input
+      StoreI PosSens2
+      Load PosSens2
+      Add one
+      Store PosSens2
+      Load cont2
+	  subt one
+      Store cont2
+      Skipcond 400
+      Jump Sens2
+
+Load PosSens2
+subt one
+Store PosSens2
+
+/ Loop total suma
+TSuma, Load dividendo
+	AddI PosSens2
+	Store dividendo
+    Output
+    Load PosSens2
+	subt one
+    store PosSens2
+	subt two
+    Skipcond 400
+	Jump TSuma
+
+
+/ Division
+/Loop para restar
+restar, Load dividendo
+      Subt divisor
+      Store dividendo
+      Skipcond 000
+      Jump regla1
+      Jump regla2
+      
+regla1, Load cociente
+Add one
+Store cociente
+Jump restar
+
+regla2, Load cociente
+Output /imprime el cociente
+Halt
+
+/SumTotal deberia ser 155
+/Cociente debe ser 15
+
+a, DEC 0
+b, DEC 0
+cont, DEC 10
+cont2, DEC 10
+PosSens2, HEX 010
+dividendo, DEC 0
+divisor, DEC 10
+cociente, DEC 0
+one, DEC 1
+two, DEC 15
